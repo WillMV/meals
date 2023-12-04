@@ -1,0 +1,89 @@
+import 'package:flutter/material.dart';
+import 'package:meals/models/meal.dart';
+
+class MealItem extends StatelessWidget {
+  const MealItem({
+    super.key,
+    required this.meal,
+  });
+
+  final Meal meal;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Card(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          elevation: 4,
+          margin: const EdgeInsets.all(10),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(15),
+            onTap: () {},
+            child: Column(
+              children: [
+                Stack(
+                  children: [
+                    ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                        topLeft: Radius.circular(15),
+                        topRight: Radius.circular(15),
+                      ),
+                      child: Image.network(
+                        meal.imageUrl,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 20,
+                      right: 15,
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 5,
+                        ),
+                        color: Colors.black38,
+                        width: 250,
+                        child: Text(meal.title,
+                            style: Theme.of(context).textTheme.titleLarge!),
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Row(
+                        children: [
+                          const Icon(Icons.timer_outlined),
+                          Text('${meal.duration.toString()} min')
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          const Icon(Icons.work),
+                          Text(meal.complexityText)
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          const Icon(Icons.attach_money),
+                          Text(meal.costText)
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        const Divider(),
+      ],
+    );
+  }
+}

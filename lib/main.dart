@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:meals/models/routes.dart';
+import 'package:meals/screens/category_meal_screen.dart';
 import 'package:meals/screens/category_screen.dart';
 
 void main() {
@@ -8,7 +10,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     final ThemeData theme = ThemeData();
@@ -16,15 +17,23 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: theme.copyWith(
-          colorScheme: theme.colorScheme.copyWith(
-            primary: Colors.amber,
-            background: Colors.amber.shade50,
-            secondary: Colors.purple,
+        colorScheme: theme.colorScheme.copyWith(
+          primary: Colors.amber,
+          background: Colors.amber.shade50,
+          secondary: Colors.purple,
+        ),
+        textTheme: theme.textTheme.copyWith(
+          titleLarge: const TextStyle(
+            fontFamily: 'Roboto',
+            color: Colors.white,
           ),
-          textTheme: theme.textTheme.copyWith(
-              titleLarge:
-                  const TextStyle(fontFamily: 'Roboto', color: Colors.black))),
-      home: const CategoryScreen(),
+        ),
+      ),
+      routes: {
+        Routes.home: (context) => const CategoryScreen(),
+        Routes.categoriesMeals: (context) => const CategoryMealScreen()
+      },
+      initialRoute: Routes.home,
     );
   }
 }
