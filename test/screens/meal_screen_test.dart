@@ -10,9 +10,21 @@ void main() {
     await tester.tap(find.text(meal.title));
 
     expect(find.text(meal.title), findsOneWidget);
+  });
+  testWidgets('if render steps', (tester) async {
+    await tester.pumpWidget(const MyApp());
+    await tester.tap(find.text(meal.categories[0]));
+    await tester.tap(find.text(meal.title));
+
     meal.steps.map((e) {
       expect(find.text(e), findsOneWidget);
     });
+  });
+  testWidgets('id render ingredients.', (tester) async {
+    await tester.pumpWidget(const MyApp());
+    await tester.tap(find.text(meal.categories[0]));
+    await tester.tap(find.text(meal.title));
+
     meal.ingredients.map((e) {
       expect(find.text(e), findsOneWidget);
     });
