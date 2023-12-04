@@ -39,6 +39,22 @@ class MealItem extends StatelessWidget {
                       ),
                       child: Image.network(
                         meal.imageUrl,
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) {
+                            return child;
+                          }
+                          return SizedBox(
+                              width: double.infinity,
+                              height: 400,
+                              child: Center(
+                                  child: CircularProgressIndicator(
+                                value: loadingProgress.expectedTotalBytes !=
+                                        null
+                                    ? loadingProgress.cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes!
+                                    : null,
+                              )));
+                        },
                         fit: BoxFit.cover,
                       ),
                     ),
