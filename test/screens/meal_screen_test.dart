@@ -20,7 +20,7 @@ void main() {
       expect(find.text(e), findsOneWidget);
     });
   });
-  testWidgets('id render ingredients.', (tester) async {
+  testWidgets('if render ingredients.', (tester) async {
     await tester.pumpWidget(const MyApp());
     await tester.tap(find.text(meal.categories[0]));
     await tester.tap(find.text(meal.title));

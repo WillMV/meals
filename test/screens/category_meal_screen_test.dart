@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:meals/data/dummy_data.dart';
 import 'package:meals/main.dart';
@@ -21,8 +20,8 @@ void main() {
       dummyMeals.map((m) {
         if (m.categories.contains(c.title)) {
           expect(find.text(m.title), findsOneWidget);
-          expect(find.textContaining(m.duration.toString()), findsOneWidget);
           expect(find.text(m.complexityText), findsOneWidget);
+          expect(find.textContaining(m.duration.toString()), findsOneWidget);
         } else {
           expect(find.text(m.title), findsNothing);
         }
