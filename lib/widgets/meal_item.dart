@@ -43,9 +43,11 @@ class MealItem extends StatelessWidget {
                           if (loadingProgress == null) {
                             return child;
                           }
-                          return SizedBox(
+                          return Container(
                               width: double.infinity,
                               height: 400,
+                              decoration:
+                                  BoxDecoration(color: Colors.grey[200]),
                               child: Center(
                                   child: CircularProgressIndicator(
                                 value: loadingProgress.expectedTotalBytes !=
