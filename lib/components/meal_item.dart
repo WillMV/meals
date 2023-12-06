@@ -45,7 +45,7 @@ class MealItem extends StatelessWidget {
                           }
                           return Container(
                               width: double.infinity,
-                              height: 400,
+                              height: 300,
                               decoration:
                                   BoxDecoration(color: Colors.grey[200]),
                               child: Center(
